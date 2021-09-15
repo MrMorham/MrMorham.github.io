@@ -1,14 +1,31 @@
-import React, { useState } from 'react'
-import { callDatabase } from './firebase';
+import React, { useEffect, useState } from 'react';
+import { ref, onValue } from "firebase/database";
+import { db } from "./firebase";
+
 
 function App() {
 
-  const [head, setHead] = useState(callDatabase());
+  const reference = ref(db, 'Test/');
+
+  useEffect(() => {
+    callDatabase()
+  }, [])
+
+  const [head, setHead] = useState();
+
+  function callDatabase() {
+    onValue(reference, (snapshot) => {
+      const data = snapshot.val();
+      setHead(data)
+    });
+  }
+
+  console.log(head["testString"])
 
   return (
     <div>
-      <div>{head}</div>
-      <div>HELLO WORLD</div>
+      <div>{head["testString"]}</div>
+      <div>Hello from React!</div>
     </div>
   );
 }
