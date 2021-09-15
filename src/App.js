@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { callDatabase } from './firebase';
 
 function App() {
+
+  const [head, setHead] = useState(callDatabase());
+
   return (
     <div>
-      HELLO WORLD
+      <div>{head}</div>
+      <div>HELLO WORLD</div>
     </div>
   );
 }
