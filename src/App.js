@@ -5,13 +5,13 @@ import { db } from "./firebase";
 
 function App() {
 
-  const reference = ref(db, 'Test/');
+  const reference = ref(db, 'test/');
 
   useEffect(() => {
     callDatabase()
   }, [])
 
-  const [head, setHead] = useState();
+  const [head, setHead] = useState({"string": ""});
 
   function callDatabase() {
     onValue(reference, (snapshot) => {
@@ -20,11 +20,11 @@ function App() {
     });
   }
 
-  console.log(head["testString"])
+  console.log(head)
 
   return (
     <div>
-      <div>{head["testString"]}</div>
+      <div>{head["string"]}</div>
       <div>Hello from React!</div>
     </div>
   );
