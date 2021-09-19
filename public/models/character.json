@@ -1,0 +1,145 @@
+{
+    "name": "default",
+    "age": 0,
+    "species": "Human",
+    "finances": {
+        "pension": 0,
+        "debt": 0,
+        "cash": 0,
+        "ship": 0
+    },
+    "characteristics": [
+        {
+            "name": "Strength",
+            "values": {
+                "score": 0,
+                "modifier": 0
+            }
+        },
+        {
+            "name": "Dexterity",
+            "values": {
+                "score": 0,
+                "modifier": 0
+            }
+        },
+        {
+            "name": "Endurance",
+            "values": {
+                "score": 0,
+                "modifier": -1
+            }
+        },
+        {
+            "name": "Intellect",
+            "values": {
+                "score": 0,
+                "modifier": 0
+            }
+        },
+        {
+            "name": "Education",
+            "values": {
+                "score": 0,
+                "modifier": 0
+            }
+        },
+        {
+            "name": "Social",
+            "values": {
+                "score": 0,
+                "modifier": 0
+            }
+        },
+        {
+            "name": "Psionics",
+            "values": {
+                "score": 0,
+                "modifier": 0
+            }
+        }
+    ],
+    "skills": {
+        "admin": {
+            "name": "Admin",
+            "description": "default",
+            "score": -3
+        }
+    },
+    "home_planet": {
+        "name": "default_name",
+        "code": "default_code",
+        "size": {
+            "code": 0,
+            "value": 0
+        },
+        "atmosphere": {
+            "code": 0,
+            "description": "",
+            "pressure": 0,
+            "survival_gear": ""
+        },
+        "temperature": {
+            "type": "",
+            "description": "",
+            "average_temperature": 0
+        },
+        "hydrographics": {
+            "code": 0,
+            "percentage": 0,
+            "description": ""
+        },
+        "population": {
+            "code": 0,
+            "count": 0
+        },
+        "government": {
+            "code": 0,
+            "type": "",
+            "description": "",
+            "contraband": []
+        },
+        "factions": [],
+        "law_level": {
+            "code": 0,
+            "illegal_possessions": {
+                "weapons": [],
+                "drugs": [],
+                "information": [],
+                "technology": [],
+                "travellers": [],
+                "psionics": []
+            }
+        },
+        "starport": {
+            "code": 0,
+            "quality": "",
+            "berthing_cost": 0,
+            "fuel": "",
+            "facilities": "",
+            "bases": {
+                "naval": false,
+                "scout": false,
+                "research": false,
+                "travellers_aid_society": false,
+                "imperial_consulate": false,
+                "pirate": false
+            }
+        },
+        "technology_level": 0,
+        "trade_codes": []
+    },
+    "career": [
+        {
+            "term": 0,
+            "career_name": "",
+            "branch": "",
+            "rank": {
+                "value": 0,
+                "title": ""
+            },
+            "events": [],
+            "benefits": []
+        }
+    ]
+}
