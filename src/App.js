@@ -44,6 +44,10 @@ function App() {
   return (
     <div>
       <SignIn />
+
+    <br />
+    <div>{head.string}</div>
+    <br />
       <form>
         Name: <input id="name" type="text" defaultValue={character.name ? "" : character.name}></input><br />
         Age: <span id="age">{character.age ? character.age : 0}</span><br />
