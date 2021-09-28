@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { auth } from "../firebase-config";
 import { signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth"
 
-function SignIn() {
+function SignIn(props) {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState()
-    const [validUser, setValidUser] = useState(false)
+    const [validUser, setValidUser] = useState()
 
     useEffect(() => {
-        updateEmail()
-        updatePassword()
-        updateError(null)
+        updateError()
         userState()
+        updateEmail("")
+        updatePassword("")
     }, [])
 
     function updateEmail() {
@@ -34,6 +34,7 @@ function SignIn() {
             .then((userCredential) => {
                 const user = userCredential.user
                 userState()
+                props.refreshDataFromDatabase()
             })
             .catch((error) => {
                 const errorCode = error.code
@@ -69,10 +70,10 @@ function SignIn() {
         )
     } else {
         return (
-        <form>
-            <label>Email: </label><input id="email" type="text" onChange={updateEmail} />
-            <label>Password: </label><input id="password" type="password" onChange={updatePassword} />
-            <input id="submit" type="submit" onClick={login}></input>
+        <form onSubmit={login}>
+            <label>Email: </label><input id="email" type="text" onChange={updateEmail} /><br />
+            <label>Password: </label><input id="password" type="password" onChange={updatePassword} /><br />
+            <input id="submit" type="submit"></input>
             <div id="error">{error ? error : ""}</div>
         </form>
         )

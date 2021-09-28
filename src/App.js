@@ -6,49 +6,49 @@ import SignIn from './Components/SignIn';
 
 function App() {
 
-  const reference = ref(db, 'test/');
+  const reference = ref(db, 'skills/');
 
   useEffect(() => {
     loadBaseCharacter()
-    callDatabase()
+    refreshDataFromDatabase()
   }, [])
 
-  const [head, setHead] = useState({ "string": "" });
-
+  const [availableSkills, setAvailableSkills] = useState([])
+  const [skillKeys, setSkillKeys] = useState([])
   const [character, setCharacter] = useState([])
 
-  function callDatabase() {
+  const refreshDataFromDatabase = (event) => {
     onValue(reference, (snapshot) => {
       const data = snapshot.val();
-      setHead(data)
+      setAvailableSkills(data)
+      setSkillKeys(Object.keys(data))
     });
   }
 
   function loadBaseCharacter() {
     fetch('./models/character.json',
-    {
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
-    }
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      }
     )
-      .then(function(response){
+      .then(function (response) {
         return response.json();
       })
-      .then(function(myJson) {
+      .then(function (myJson) {
         setCharacter(myJson)
       });
   }
 
   return (
     <div>
-      <SignIn />
-
-    <br />
-    <div>{head.string}</div>
-    <br />
-      <form>
+      <SignIn refreshDataFromDatabase={refreshDataFromDatabase} />
+      
+      <br />
+      
+      <div>
         Name: <input id="name" type="text" defaultValue={character.name ? "" : character.name}></input><br />
         Age: <span id="age">{character.age ? character.age : 0}</span><br />
         Characteristics:
@@ -61,7 +61,20 @@ function App() {
             </div>
           )
         }) : <div></div>}
-      </form>
+      
+        <br />
+      
+        {
+          skillKeys ? skillKeys.map(skill => {
+            return (
+              <div key={skill} id={skill}>
+                <span><strong>{availableSkills[skill].name}</strong> <span>{skill}</span></span><br />
+                <span>{availableSkills[skill].description}</span>
+              </div>
+            )
+          }) : <div></div>
+        }
+      </div>
     </div>
   );
 }
