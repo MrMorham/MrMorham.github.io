@@ -6,7 +6,7 @@ import SignIn from './Components/SignIn';
 
 function App() {
 
-  const reference = ref(db, 'skills/');
+  const reference = ref(db, 'public/skills_detail/');
 
   useEffect(() => {
     loadBaseCharacter()

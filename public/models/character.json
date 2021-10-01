@@ -27,7 +27,7 @@
             "name": "Endurance",
             "values": {
                 "score": 0,
-                "modifier": -1
+                "modifier": 0
             }
         },
         {
